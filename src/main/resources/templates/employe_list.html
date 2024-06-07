@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Employés</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Liste des Employés</h1>
+    <!-- Tableau pour afficher la liste des employés -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Compétences</th>
+            <th>Project</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Boucle sur la liste des employés -->
+        <tr th:each="employee : ${employes}">
+            <!-- Affichage des informations de l'employé -->
+            <td th:text="${employe.name}"></td>
+            <td th:text="${employe.email}"></td>
+            <td>
+                <!-- Affichage des compétences de l'employé -->
+                <span th:each="skill : ${employe.skills}" th:text="${skill}"></span>
+            </td>
+            <td>
+                <!-- Affichage des projets affectés de l'employé -->
+                <span th:each="project : ${employe.projects}" th:text="${project.name}"></span>
+            </td>
+            <!-- Actions (boutons d'édition/suppression) -->
+            <td>
+                <button type="button" class="btn btn-primary">Éditer</button>
+                <button type="button" class="btn btn-danger">Supprimer</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
